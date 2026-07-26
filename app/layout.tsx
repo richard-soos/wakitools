@@ -1,5 +1,19 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
+import Header from "@/components/Header";
+
+const themeScript = `
+  (function () {
+    try {
+      var storedTheme = localStorage.getItem("wakitools-theme");
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      var isDark = storedTheme === "dark" || (storedTheme !== "light" && prefersDark);
+
+      document.documentElement.classList.toggle("dark", isDark);
+    } catch (error) {}
+  })();
+`;
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,8 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <body>
+        <Script id="theme-script" strategy="beforeInteractive">
+          {themeScript}
+        </Script>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

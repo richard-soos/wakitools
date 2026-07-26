@@ -124,11 +124,11 @@ const TextCompare = () => {
   return (
     <main className="min-h-screen bg-background px-6 py-10 text-foreground">
       <div className="mx-auto flex w-full  flex-col gap-6">
-        <header className="flex items-center justify-between">
+        <header className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Text Compare</h1>
 
-            <p className="mt-1 text-sm text-foreground/60">
+            <p className="mt-1 text-sm text-muted">
               Compare two texts and highlight their differences.
             </p>
           </div>
@@ -140,14 +140,16 @@ const TextCompare = () => {
             className="
               rounded-lg
               bg-primary
+              w-full
               px-5
               py-2.5
               font-medium
-              text-white
+              text-background
               transition
               hover:opacity-90
               disabled:cursor-not-allowed
               disabled:opacity-50
+              sm:w-auto
             "
           >
             {editing ? "Compare" : "Edit texts"}
@@ -202,7 +204,7 @@ const TextPanel = ({
       <div className="flex items-center justify-between">
         <h2 className="text-sm font-semibold">{label}</h2>
 
-        <span className="text-xs text-foreground/50">
+        <span className="text-xs text-muted">
           {text.length} characters
         </span>
       </div>
@@ -230,12 +232,12 @@ const EditLineNumbers = ({ text }: EditLineNumbersProps) => {
         flex-col
         border-r
         border-border
-        bg-muted
+        bg-surface
         p-4
         text-right
         font-mono
         leading-6
-        text-white
+        text-muted
         select-none
       "
     >
@@ -263,12 +265,12 @@ const CompareLineNumbers = ({ rows, side }: CompareLineNumbersProps) => {
         flex-col
         border-r
         border-border
-        bg-muted
+        bg-surface
         py-4
         text-right
         font-mono
         leading-6
-        text-white
+        text-muted
         select-none
       "
     >
@@ -324,8 +326,8 @@ const TextArea = ({ text, setText }: TextAreaProps) => {
           leading-6
           outline-none
           transition
-          placeholder:text-foreground/40
-          focus:bg-surface-primary
+          placeholder:text-muted
+          focus:bg-surface
         "
       />
     </div>

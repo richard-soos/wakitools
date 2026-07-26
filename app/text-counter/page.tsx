@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { Metadata } from "next";
 
 type Stat = {
   key: string;
@@ -108,8 +107,8 @@ const TextCounter = () => {
   }, [text]);
 
   return (
-    <main className="min-h-screen bg-background text-foreground flex ">
-      <div className="mx-auto w-6xl p-6 grid grid-cols-[.3fr_.7fr] gap-4">
+    <main className="flex min-h-screen bg-background text-foreground">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-4 p-4 sm:p-6 lg:grid-cols-[0.3fr_0.7fr]">
         <div className="rounded-xl border border-border bg-surface p-6 flex flex-col gap-2">
           <h1 className="text-3xl font-bold text-primary">Word density</h1>
 
