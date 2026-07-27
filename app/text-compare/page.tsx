@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { diffChars, diffLines, type Change } from "diff";
+import ToolPageLayout from "@/components/ToolPageLayout";
 
 type CompareSide = "left" | "right";
 
@@ -122,17 +123,10 @@ const TextCompare = () => {
   };
 
   return (
-    <main className="min-h-screen bg-background px-6 py-10 text-foreground">
-      <div className="mx-auto flex w-full  flex-col gap-6">
-        <header className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight">Text Compare</h1>
-
-            <p className="mt-1 text-sm text-muted">
-              Compare two texts and highlight their differences.
-            </p>
-          </div>
-
+    <ToolPageLayout
+      title="Text Compare"
+      description="Compare two texts and highlight their differences."
+      action={
           <button
             type="button"
             onClick={compare}
@@ -154,31 +148,30 @@ const TextCompare = () => {
           >
             {editing ? "Compare" : "Edit texts"}
           </button>
-        </header>
+      }
+    >
+      <section className="w-full rounded-xl border border-border bg-surface p-3 shadow-sm sm:p-4">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <TextPanel
+            label="Original text"
+            text={leftText}
+            editing={editing}
+            rows={rows}
+            side="left"
+            setText={setLeftText}
+          />
 
-        <section className="w-full rounded-xl border border-border bg-surface p-6 shadow-sm">
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-            <TextPanel
-              label="Original text"
-              text={leftText}
-              editing={editing}
-              rows={rows}
-              side="left"
-              setText={setLeftText}
-            />
-
-            <TextPanel
-              label="Modified text"
-              text={rightText}
-              editing={editing}
-              rows={rows}
-              side="right"
-              setText={setRightText}
-            />
-          </div>
-        </section>
-      </div>
-    </main>
+          <TextPanel
+            label="Modified text"
+            text={rightText}
+            editing={editing}
+            rows={rows}
+            side="right"
+            setText={setRightText}
+          />
+        </div>
+      </section>
+    </ToolPageLayout>
   );
 };
 

@@ -1,6 +1,6 @@
 const Home = () => {
   return (
-    <main className="relative isolate min-h-max flex flex-col justify-center items-center overflow-hidden bg-background px-[clamp(1.25rem,4vw,4.5rem)] text-foreground">
+    <main className="relative isolate flex flex-1 flex-col items-center justify-center overflow-hidden bg-background px-[clamp(1.25rem,4vw,4.5rem)] text-foreground">
       <section
         className="flex w-full max-w-[52rem] self-center justify-self-center flex-col items-center pt-12 pb-12 text-center sm:pb-20"
         aria-labelledby="welcome-title"

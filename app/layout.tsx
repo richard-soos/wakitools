@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
-      <body>
+      <body className="flex min-h-dvh flex-col">
         <Script id="theme-script" strategy="beforeInteractive">
           {themeScript}
         </Script>

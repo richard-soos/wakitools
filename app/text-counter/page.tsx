@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import ToolPageLayout from "@/components/ToolPageLayout";
 
 type Stat = {
   key: string;
@@ -107,12 +108,15 @@ const TextCounter = () => {
   }, [text]);
 
   return (
-    <main className="flex min-h-screen bg-background text-foreground">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-4 p-4 sm:p-6 lg:grid-cols-[0.3fr_0.7fr]">
-        <div className="rounded-xl border border-border bg-surface p-6 flex flex-col gap-2">
-          <h1 className="text-3xl font-bold text-primary">Word density</h1>
+    <ToolPageLayout
+      title="Text Counter"
+      description="Count characters, words and lines instantly."
+    >
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-[0.3fr_0.7fr]">
+        <section className="flex flex-col gap-2 rounded-xl border border-border bg-surface p-6">
+          <h2 className="text-xl font-bold">Word density</h2>
 
-          <p className="mt-2 text-muted">
+          <p className="text-sm text-muted">
             Find the most frequently used words.
           </p>
           {wordDensity.map((item) => (
@@ -123,13 +127,10 @@ const TextCounter = () => {
               percentage={item.percentage}
             />
           ))}
-        </div>
-        <div className="rounded-xl border border-border bg-surface p-6">
-          <h1 className="text-3xl font-bold text-primary">Character Counter</h1>
+        </section>
 
-          <p className="mt-2 text-muted">
-            Count characters, words and lines instantly.
-          </p>
+        <section className="rounded-xl border border-border bg-surface p-6">
+          <h2 className="text-xl font-bold">Text statistics</h2>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
             {Object.values(stats).map((stat) => (
@@ -142,9 +143,9 @@ const TextCounter = () => {
             placeholder="Start typing or paste your text..."
             className="mt-6 min-h-64 w-full rounded-lg border border-border bg-surface-secondary p-4 focus:border-primary focus:outline-none"
           />
-        </div>
+        </section>
       </div>
-    </main>
+    </ToolPageLayout>
   );
 };
 
