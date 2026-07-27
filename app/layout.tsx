@@ -16,7 +16,7 @@ const themeScript = `
 `;
 
 export const metadata: Metadata = {
-  title: "WakiTools",
+  title: "WakiTools Free",
   description: "Wakidu's tool lib.",
 };
 
