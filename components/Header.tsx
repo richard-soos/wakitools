@@ -7,9 +7,9 @@ import type { Route } from "next";
 const THEME_STORAGE_KEY = "wakitools-theme";
 
 const TOOL_LINKS = [
-  { name: "Text Counter", path: "/text-counter" },
-  { name: "Text Compare", path: "/text-compare" },
   { name: "Long PDF", path: "/long-pdf" },
+  { name: "Text Compare", path: "/text-compare" },
+  { name: "Text Counter", path: "/text-counter" },
 ] satisfies { name: string; path: Route }[];
 
 const Header = () => {
