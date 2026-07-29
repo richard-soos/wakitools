@@ -213,11 +213,11 @@ const CompareLineNumbers = ({ rows, side }: CompareLineNumbersProps) => {
           lineNumber++;
         }
 
-        const lineClassName = line?.added
-          ? "bg-green-200 text-green-950"
-          : line?.removed
-            ? "bg-red-200 text-red-950"
-            : "";
+const lineClassName = line?.added
+  ? "bg-green-200 text-green-950 dark:bg-green-500/25 dark:text-green-100"
+  : line?.removed
+    ? "bg-red-200 text-red-950 dark:bg-red-500/25 dark:text-red-100"
+    : "";
 
         return (
           <span key={index} className={`w-[58px] ${lineClassName}`}>
@@ -320,7 +320,7 @@ const CompareRow = ({ row, side }: CompareRowProps) => {
         min-w-max
         whitespace-pre
         px-4
-        ${line.added ? "bg-green-100" : line.removed ? "bg-red-100" : ""}
+                      ${line.added ? "bg-green-100 dark:bg-green-500/15" : line.removed ? "bg-red-100 dark:bg-red-500/15" : ""}
       `}
     >
       {isModifiedPair ? (
@@ -331,9 +331,13 @@ const CompareRow = ({ row, side }: CompareRowProps) => {
         />
       ) : (
         <span
-          className={
-            line.added ? "text-green-950" : line.removed ? "text-red-950" : ""
-          }
+                          className={
+                            line.added
+                              ? "text-green-950 dark:text-green-200"
+                              : line.removed
+                                ? "text-red-950 dark:text-red-200"
+                                : ""
+                          }
         >
           {isChanged ? renderWhitespace(line.value) : line.value || "\u00A0"}
         </span>
@@ -361,13 +365,13 @@ const CharacterDiff = ({ leftValue, rightValue, side }: CharacterDiffProps) => {
         return (
           <span
             key={index}
-            className={
-              part.added
-                ? "bg-green-300 text-green-950"
-                : part.removed
-                  ? "bg-red-300 text-red-950"
-                  : ""
-            }
+                              className={
+                                part.added
+                                  ? "bg-green-300 text-green-950 dark:bg-green-400/30 dark:text-green-100"
+                                  : part.removed
+                                    ? "bg-red-300 text-red-950 dark:bg-red-400/30 dark:text-red-100"
+                                    : ""
+                              }
           >
             {isChanged ? renderWhitespace(part.value) : part.value}
           </span>
